@@ -29,7 +29,6 @@ public class Server {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
-                            //ch.pipeline().addLast()
                         }
                     });
             ChannelFuture future = bootstrap.bind(8888).sync();
