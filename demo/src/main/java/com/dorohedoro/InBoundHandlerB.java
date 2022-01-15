@@ -11,8 +11,8 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 public class InBoundHandlerB extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ctx.fireChannelRead(msg);
         System.out.println("InBoundHandlerB: " + msg);
+        ctx.fireChannelRead(msg);
     }
 
     @Override
