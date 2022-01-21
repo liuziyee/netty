@@ -1,11 +1,15 @@
 package com.dorohedoro;
 
+import com.dorohedoro.inbound.InBoundHandlerA;
+import com.dorohedoro.inbound.InBoundHandlerB;
+import com.dorohedoro.inbound.InBoundHandlerC;
+import com.dorohedoro.outbound.OutBoundHandlerA;
+import com.dorohedoro.outbound.OutBoundHandlerB;
+import com.dorohedoro.outbound.OutBoundHandlerC;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
-import io.netty.channel.nio.NioEventLoop;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -33,6 +37,9 @@ public class Server {
                             ch.pipeline().addLast(new InBoundHandlerA());
                             ch.pipeline().addLast(new InBoundHandlerB());
                             ch.pipeline().addLast(new InBoundHandlerC());
+                            ch.pipeline().addLast(new OutBoundHandlerA());
+                            ch.pipeline().addLast(new OutBoundHandlerB());
+                            ch.pipeline().addLast(new OutBoundHandlerC());
                         }
                     });
             ChannelFuture future = bootstrap.bind(8888).sync();

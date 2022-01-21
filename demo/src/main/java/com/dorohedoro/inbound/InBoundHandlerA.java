@@ -1,4 +1,4 @@
-package com.dorohedoro;
+package com.dorohedoro.inbound;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -13,5 +13,11 @@ public class InBoundHandlerA extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("InBoundHandlerA: " + msg);
         ctx.fireChannelRead(msg);
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        System.out.println(cause.getMessage() + " and now caught by InBoundHandlerA");
+        ctx.fireExceptionCaught(cause);
     }
 }
